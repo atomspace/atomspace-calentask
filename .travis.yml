@@ -16,3 +16,4 @@ script:
   - yarn lint
   - yarn test
   - yarn build --release
+sudo: enabled
