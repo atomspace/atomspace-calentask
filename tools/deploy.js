@@ -15,9 +15,9 @@ import run from './run';
 
 // GitHub Pages
 const remote = {
-  name: 'github',
+  name: 'origin',
   url: 'https://github.com/atomspace/atomspace-calentask.git',
-  branch: 'devel',
+  branch: 'dev',
   website: 'https://devel.github.io/atomspace-calentask/',
   static: true,
 };
