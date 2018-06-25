@@ -1,8 +1,11 @@
+os:
+  - 'linux'
+  - 'osx'
 language: node_js
+sudo: enabled
 node_js:
   - 'stable'
-  - '8'
-  - '6'
+  - '10'
 env:
   - CXX=g++-4.8
 addons:
@@ -16,4 +19,3 @@ script:
   - yarn lint
   - yarn test
   - yarn build --release
-sudo: enabled
