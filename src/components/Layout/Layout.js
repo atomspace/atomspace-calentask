@@ -25,7 +25,7 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
-        {/* <Sidebar /> */}
+        <Sidebar />
         <Main />
         <Footer />
       </div>
