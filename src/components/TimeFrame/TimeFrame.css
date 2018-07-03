@@ -1,0 +1,5 @@
+.TimeFrame {
+  border: 1px outset black;
+  display: flex;
+  flex-direction: column;
+}

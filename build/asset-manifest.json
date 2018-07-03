@@ -1,0 +1,22 @@
+{
+  "about.js": "/assets/about.chunk.js",
+  "about~admin~contact~home~login~not-found~privacy~register.js":
+    "/assets/about~admin~contact~home~login~not-found~privacy~register.chunk.js",
+  "admin.js": "/assets/admin.chunk.js",
+  "client.js": "/assets/client.js",
+  "contact.js": "/assets/contact.chunk.js",
+  "home.js": "/assets/home.chunk.js",
+  "login.js": "/assets/login.chunk.js",
+  "not-found.js": "/assets/not-found.chunk.js",
+  "privacy.js": "/assets/privacy.chunk.js",
+  "register.js": "/assets/register.chunk.js",
+  "src/components/Header/calendar.svg":
+    "/assets/src/components/Header/calendar.svg?b3d6e64c",
+  "src/components/Header/menu.svg":
+    "/assets/src/components/Header/menu.svg?ca394ec8",
+  "src/components/Sidebar/soccer-player.svg":
+    "/assets/src/components/Sidebar/soccer-player.svg?0e661690",
+  "vendors.js": "/assets/vendors.chunk.js",
+  "vendors~about~admin~contact~home~login~not-found~privacy~register.js":
+    "/assets/vendors~about~admin~contact~home~login~not-found~privacy~register.chunk.js"
+}
