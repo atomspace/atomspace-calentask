@@ -15,9 +15,9 @@ import run from './run';
 
 // GitHub Pages
 const remote = {
-  name: 'github',
+  name: 'origin',
   url: 'https://github.com/atomspace/atomspace-calentask.git',
-  branch: 'devel',
+  branch: 'dev',
   website: 'https://devel.github.io/atomspace-calentask/',
   static: true,
 };
@@ -118,7 +118,7 @@ async function deploy() {
   }
   await spawn(
     'git',
-    ['push', remote.name, `master:${remote.branch}`, '--set-upstream'],
+    ['push', remote.name, remote.branch, '`--set-upstream`'],
     options,
   );
 
