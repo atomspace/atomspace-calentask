@@ -14,13 +14,13 @@
 }
 
 .root {
-  background: #373277;
+  background: rgb(63, 150, 85);
   color: #fff;
 }
 
 .container {
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0;
   max-width: var(--max-content-width);
 }
 
@@ -51,4 +51,13 @@
   color: rgba(255, 255, 255, 0.5);
   font-size: 1.25em;
   margin: 0;
+}
+
+.calendarlogo {
+  margin-bottom: 6px;
+}
+
+.menulogo {
+  margin-bottom: 9px;
+  margin-right: 10px;
 }

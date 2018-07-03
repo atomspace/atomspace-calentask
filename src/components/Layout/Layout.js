@@ -17,18 +17,16 @@ import s from './Layout.css';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import Main from '../Main';
+import Sidebar from '../Sidebar';
 
 class Layout extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  };
-
   render() {
     return (
       <div>
         <Header />
-        {this.props.children}
-        <Feedback />
+        <Sidebar />
+        <Main />
         <Footer />
       </div>
     );
