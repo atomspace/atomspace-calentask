@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.51",
+    "apollo-boost": "^0.1.10",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "cookie-parser": "^1.4.3",
@@ -21,6 +22,7 @@
     "express-graphql": "^0.6.12",
     "express-jwt": "^5.3.1",
     "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
     "isomorphic-style-loader": "^4.0.0",
     "jsonwebtoken": "^8.3.0",
@@ -33,6 +35,7 @@
     "prop-types": "^15.6.1",
     "query-string": "^6.1.0",
     "react": "^16.4.1",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.4.1",
     "sequelize": "^4.37.10",
     "serialize-javascript": "^1.5.0",
