@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test html code</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper z-depth-2 color-header">
+        <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Calentask</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+          <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+          <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+          <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Layout here -->
+  <div class="content">
+    <div class="row">
+      <aside class="col s2 navbar-left">
+        <img class="person-img" src="./img/user.svg" />
+        <h4>Your name</h4>
+        <div id="cont_392bc522a56119fd94d15f765833ba7b"><script type="text/javascript" async src="https://www.pogoda.com/wid_loader/392bc522a56119fd94d15f765833ba7b"></script></div>
+
+  <ul class="collapsible">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+    </script>
+
+      </aside>
+
+      <main class="col s8 calendar-block">
+        <div class="row flex-block">
+          <div class="col s1 border">
+            <div class="number-week">Mon</div>
+            <div class="number">1</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Tue</div>
+            <div class="number">2</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Wed</div>
+            <div class="number">3</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Thu</div>
+            <div class="number">4</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Fri</div>
+            <div class="number">5</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Sat</div>
+            <div class="number">6</div>
+          </div>
+          <div class="col s1 border">
+            <div class="number-week">Sun</div>
+            <div class="number">7</div>
+          </div>
+        </div>
+        <div class="timeframe">
+          <div class="hour">00:00</div>
+          <div class="hour">01:00</div>
+          <div class="hour">02:00</div>
+          <div class="hour">03:00</div>
+          <div class="hour">04:00</div>
+          <div class="hour">05:00</div>
+          <div class="hour">06:00</div>
+          <div class="hour">07:00</div>
+          <div class="hour">08:00</div>
+          <div class="hour">09:00</div>
+          <div class="hour">10:00</div>
+          <div class="hour">11:00</div>
+          <div class="hour">12:00</div>
+          <div class="hour">13:00</div>
+          <div class="hour">14:00</div>
+          <div class="hour">15:00</div>
+          <div class="hour">16:00</div>
+          <div class="hour">17:00</div>
+          <div class="hour">18:00</div>
+          <div class="hour">19:00</div>
+          <div class="hour">20:00</div>
+          <div class="hour">21:00</div>
+          <div class="hour">22:00</div>
+          <div class="hour">23:00</div>
+        </div>
+      </main>
+
+      <aside class="col s2 navbar-right">
+        3
+      </aside>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>
+</html>

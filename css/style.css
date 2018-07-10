@@ -1,0 +1,71 @@
+header nav {
+  position: absolute;
+}
+
+.content {
+  padding-top: 64px;
+}
+
+.content > .row {
+  margin: 0;
+  height: 100vh;
+}
+
+.color-header {
+  background-color: #009C5C !important;
+}
+
+.navbar-left {
+  background-color: #81c784;
+  height: inherit;
+}
+
+.navbar-right {
+  background-color: #81c784;
+  height: inherit;
+}
+
+.calendar-block {
+  background-color: #c8e6c9;
+  overflow-y: scroll;
+  height: inherit;
+}
+
+.border {
+  border-bottom: 1px outset black;
+}
+
+.flex-block {
+  display: flex;
+  margin-bottom: 0 !important;
+}
+
+.timeframe {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hour {
+  margin-bottom: 15px;
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.person-img {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+h4 {
+  text-align: center;
+}
+
+
+
