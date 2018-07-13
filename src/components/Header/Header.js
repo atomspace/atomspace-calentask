@@ -11,7 +11,6 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
 import Link from '../Link';
-import Navigation from '../Navigation';
 import Calendar from './calendar.svg';
 import Menu from './menu.svg';
 
@@ -20,7 +19,6 @@ class Header extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <Navigation />
           <Link to="/">
             <img className={s.menulogo} src={Menu} />
           </Link>
