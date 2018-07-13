@@ -1,20 +1,51 @@
 import React from 'react';
-import cx from 'classnames';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Main.css';
-import Link from '../Link';
-import WeekHeader from '../WeekHeader/WeekHeader';
-import TimeFrame from '../TimeFrame/TimeFrame';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import LeftSidebar from './LeftSidebar/LeftSidebar';
+import RightSidebar from './RightSidebar/RightSidebar';
+import WeekHeader from './WeekHeader/WeekHeader';
+import TimeFrame from './TimeFrame/TimeFrame';
 
-class Main extends React.Component {
-  render() {
-    return (
-      <div className={s.mainblock}>
-        <WeekHeader />
-        <TimeFrame />
-      </div>
-    );
-  }
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
+
+function Main(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item xs>
+          <Paper className={classes.paper}>
+            <LeftSidebar />
+          </Paper>
+        </Grid>
+        <Grid item xs={7}>
+          <Paper className={classes.paper}>
+            <WeekHeader />
+            <TimeFrame />
+          </Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
 
-export default withStyles(s)(Main);
+Main.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+};
+
+export default withStyles(styles)(Main);

@@ -14,18 +14,14 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import normalizeCss from 'normalize.css';
 import s from './Layout.css';
 import Header from '../Header';
-import Footer from '../Footer';
 import Main from '../Main';
-import Sidebar from '../Sidebar';
 
 class Layout extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <Sidebar />
         <Main />
-        <Footer />
       </div>
     );
   }
