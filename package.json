@@ -14,7 +14,12 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.51",
+<<<<<<< HEAD
     "apollo-boost": "^0.1.10",
+=======
+    "@material-ui/core": "^1.3.1",
+    "@material-ui/icons": "^1.1.0",
+>>>>>>> 87eac4475fa6173a9fbd42a79ded1c0cb9ba9686
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "cookie-parser": "^1.4.3",

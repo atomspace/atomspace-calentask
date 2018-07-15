@@ -8,30 +8,56 @@
  */
 
 import React from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Header.css';
-import Link from '../Link';
-import Navigation from '../Navigation';
-import Calendar from './calendar.svg';
-import Menu from './menu.svg';
+import PropTypes from 'prop-types';
+// import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <Navigation />
-          <Link to="/">
-            <img className={s.menulogo} src={Menu} />
-          </Link>
-          <Link className={s.brand} to="/">
-            <img className={s.calendarlogo} src={Calendar} />
-            <span className={s.brandTxt}>Calentask</span>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-}
+// import s from './Header.css';
 
-export default withStyles(s)(Header);
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+const Header = props => {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" className={classes.flex}>
+            Title
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
+
+Header.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+};
+
+export default withStyles(styles)(Header);
