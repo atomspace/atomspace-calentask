@@ -14,8 +14,9 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
-    textAlign: 'center',
+    textAlign: 'left',
     color: theme.palette.text.secondary,
+    height: '100%',
   },
 });
 
@@ -25,19 +26,22 @@ function Main(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs>
+        <Grid item xs={1.5}>
           <Paper className={classes.paper}>
             <LeftSidebar />
           </Paper>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={8}>
           <Paper className={classes.paper}>
             <WeekHeader />
             <TimeFrame />
           </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>
+            x
+            <RightSidebar />
+          </Paper>
         </Grid>
       </Grid>
     </div>

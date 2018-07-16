@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './TimeFrame.css';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import s from './TimeFrame.css';
 import Hour from './Hour/Hour';
 
 const hours = [...Array(24).keys()].map(
