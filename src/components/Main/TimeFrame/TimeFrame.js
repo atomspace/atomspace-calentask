@@ -9,9 +9,10 @@ const hours = [...Array(24).keys()].map(
 
 class TimeFrame extends React.Component {
   render() {
+    console.log(s.hour);
     return (
       <div className={s.TimeFrame}>
-        {hours.map(time => <Hour key={time} hour={time} />)}
+        {hours.map(time => <Hour key={time} hour={time} className={s.hour} />)}
       </div>
     );
   }
