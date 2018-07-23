@@ -6,19 +6,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import serialize from 'serialize-javascript';
-import ApolloClient from 'apollo-boost';
-import ApolloProvider from 'react-apollo';
-import fetch from 'node-fetch';
-import { createHttpLink } from 'apollo-boost';
-
-//Apollo Client Setup
-const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql'
-})
 
 /* eslint-disable react/no-danger */
 
@@ -45,7 +35,6 @@ class Html extends React.Component {
   render() {
     const { title, description, styles, scripts, app, children } = this.props;
     return (
-      <ApolloProvider client={client} >
       <html className="no-js" lang="en">
         <head>
           <meta charSet="utf-8" />
@@ -74,7 +63,6 @@ class Html extends React.Component {
           {scripts.map(script => <script key={script} src={script} />)}
         </body>
       </html>
-      </ApolloProvider>
     );
   }
 }
