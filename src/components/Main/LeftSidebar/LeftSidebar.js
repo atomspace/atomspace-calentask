@@ -19,7 +19,6 @@ const styles = theme => ({
     position: 'relative',
     display: 'flex',
     width: '100%',
-    backgroundColor: '#80cbc4',
   },
   appBar: {
     position: 'absolute',
@@ -62,10 +61,11 @@ class LeftSidebar extends React.Component {
           classes={{
             paper: classes.drawerPaper,
           }}
+          className={classes.drawer}
         >
           <img className={s.img} src={Avatar} alt={'logo'} />
           <List>{mailFolderListItems}</List>
-          <Divider />
+          <Divider className={classes.divider} />
           <List>{otherMailFolderListItems}</List>
         </Drawer>
       </div>

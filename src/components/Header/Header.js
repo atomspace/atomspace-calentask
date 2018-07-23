@@ -24,6 +24,9 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  appbar: {
+    background: '#80cbc4',
+  },
   flex: {
     flex: 1,
   },
@@ -37,7 +40,7 @@ const Header = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.appbar} position="static">
         <Toolbar>
           <IconButton
             className={classes.menuButton}

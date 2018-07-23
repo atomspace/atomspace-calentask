@@ -11,7 +11,7 @@ class TimeFrame extends React.Component {
   render() {
     return (
       <div className={s.TimeFrame}>
-        {hours.map(time => <Hour key={time} hour={time} />)}
+        {hours.map(time => <Hour key={time} hour={time} className={s.hour} />)}
       </div>
     );
   }
