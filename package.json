@@ -145,6 +145,7 @@
     "test-cover": "yarn run test --coverage",
     "coverage": "yarn run test-cover && opn coverage/lcov-report/index.html",
     "clean": "babel-node tools/run clean",
+    "clean:modules": "rm -rf node_modules",
     "clean-cache": "rm -rf ./build && rm -rf ./coverage",
     "copy": "babel-node tools/run copy",
     "bundle": "babel-node tools/run bundle",
