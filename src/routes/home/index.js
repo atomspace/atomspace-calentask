@@ -24,7 +24,7 @@ async function action({ fetch }) {
     chunks: ['home'],
     component: (
       <Layout>
-        <Home news={data.news} />
+        <Home />
       </Layout>
     ),
   };

@@ -29,6 +29,7 @@ import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
 import models from './data/models';
+import {start} from './data/graphql-schemas/schema'
 import schema from './data/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
@@ -110,6 +111,9 @@ app.get(
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
+
+start();
+
 app.use(
   '/graphql',
   expressGraphQL(req => ({
