@@ -8,13 +8,16 @@
  */
 
 import apolloClient from 'apollo-boost';
-import gql from 'graphql-tag';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-import { graphql } from 'graphql';
+import expressJwt, {
+  UnauthorizedError as Jwt401Error
+} from 'express-jwt';
+import {
+  graphql
+} from 'graphql';
 import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
@@ -23,17 +26,23 @@ import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
 import App from './components/App';
 import Html from './components/Html';
-import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
+import {
+  ErrorPageWithoutStyle
+} from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import models from './data/models';
-import {start} from './data/graphql-schemas/schema'
-import schema from './data/schema';
+import {
+  start
+} from './data/graphql-schemas/schema'
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
+import {
+  ApolloServer,
+  gql
+} from "apollo-server-express";
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -54,14 +63,16 @@ const app = express();
 // If you are using proxy from external machine, you can set TRUST_PROXY env
 // Default is to trust proxy headers only from loopback interface.
 // -----------------------------------------------------------------------------
-app.set('trust proxy', config.trustProxy);
+// app.set('trust proxy', config.trustProxy);
 
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 //
@@ -102,8 +113,13 @@ app.get(
   }),
   (req, res) => {
     const expiresIn = 60 * 60 * 24 * 180; // 180 days
-    const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-    res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
+    const token = jwt.sign(req.user, config.auth.jwt.secret, {
+      expiresIn
+    });
+    res.cookie('id_token', token, {
+      maxAge: 1000 * expiresIn,
+      httpOnly: true
+    });
     res.redirect('/');
   },
 );
@@ -112,21 +128,11 @@ app.get(
 // Register API middleware
 // -----------------------------------------------------------------------------
 
-start();
+start(app);
 
-app.use(
-  '/graphql',
-  expressGraphQL(req => ({
-    schema,
-    graphiql: __DEV__,
-    rootValue: { request: req },
-    pretty: __DEV__,
-  })),
-);
-
-//
-// Register server-side rendering middleware
-// -----------------------------------------------------------------------------
+// //
+// // Register server-side rendering middleware
+// // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
   try {
     const css = new Set();
@@ -142,7 +148,6 @@ app.get('*', async (req, res, next) => {
     const fetch = createFetch(nodeFetch, {
       baseUrl: config.api.serverUrl,
       cookie: req.headers.cookie,
-      schema,
       graphql,
     });
 
@@ -220,12 +225,9 @@ app.use((err, req, res, next) => {
 //
 // Launch the server
 // -----------------------------------------------------------------------------
-const promise = models.sync().catch(err => console.error(err.stack));
 if (!module.hot) {
-  promise.then(() => {
-    app.listen(config.port, () => {
-      console.info(`The server is running at http://localhost:${config.port}/`);
-    });
+  app.listen(config.port, () => {
+    console.info(`The server is running at http://localhost:${config.port}/`);
   });
 }
 

@@ -1,26 +1,121 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import resolvers from './resolvers/resolvers';
-import typeDefs from './types/types';
-import {MongoClient, ObjectId} from 'mongodb';
-import {graphqlExpress, graphiqlConnect} from 'graphql-server-express'
+import {
+  makeExecutableSchema
+} from 'graphql-tools';
+// import {
+//   MongoClient,
+//   ObjectId
+// } from 'mongodb';
+import {
+  ApolloServer,
+  gql
+} from "apollo-server-express";
 
-export const start = async () => {
-try {const db = await MongoClient.connect('mongodb://cherry:cherry_2010@ds119060.mlab.com:19060/cherry-chat');
+export const start = async (app) => {
+  // try {
+    // const db = await MongoClient.connect('mongodb://cherry:cherry_2010@ds119060.mlab.com:19060/cherry-chat');
+    
+    // const Messages = db.collection('messages');
+    // console.log(db.collection('messages'));
+    // const Users = db.collection('users');
+    // const Rooms = db.collection('rooms');
 
-const Messages = db.collection('messages');
-const Users = db.collection('users');
-const Rooms = db.collection('rooms');
+  //   const prepare = (obj) => {
+  //     obj._id = obj._id.toString();
+  //     return obj;
+  //   }
 
-const graphSchema = makeExecutableSchema({typeDefs, resolvers});
+    //     const typeDefs = [`
+    //         type Query {
+    //     user(_id: String): Message
+    //     room(_id: String): Room
+    //     message(_id: String): Message
+    //     users: [User]
+    //     rooms: [Room]
+    //     messages: [Message]
+    // }
 
-app.use('/graph', graphqlExpress({schema: graphSchema}))
+    // type User {
+    //     _id: String
+    //     username: String
+    //     name: String
+    //     password: String
+    // }
 
-const homePath = '/graphiql'
+    // type Room {
+    //     _id: String
+    //     roomName: String
+    //     password: String
+    // }
 
-app.use(homePath, graphiqlExpress({
-    endpointURL: '/graphql'
-}))
+    // type Message {
+    //     _id: String
+    //     text: String
+    //     from: String
+    //     author: String
+    //     time: String
+    // }
 
-} catch{(err) => {console.error(err);}}
+    // schema {
+    //     query: Query
+    // }
+    // `]
+    //     const resolvers = {
+    //       Query: {
+    //         room: async (root, {
+    //           _id
+    //         }) => {
+    //           return prepare(await Rooms.findOne(ObjectId(_id)))
+    //         },
+    //         rooms: async () => {
+    //           return (await Rooms.find({}).toArray()).map(prepare)
+    //         },
+    //         message: async (root, {
+    //           _id
+    //         }) => {
+    //           return prepare(await Messages.findOne(ObjectId(_id)))
+    //         },
+    //         messages: async (root, {
+    //           _id
+    //         }) => {
+    //           return (await Messages.find({}).toArray()).map(prepare)
+    //         },
+    //         user: async (root, {
+    //           _id
+    //         }) => {
+    //           return prepare(await Users.findOne(ObjectId(_id)))
+    //         },
+    //         users: async () => {
+    //           return (await Users.find({}).toArray()).map(prepare)
+    //         }
+    //       }
+    //     }
+
+
+    const typeDefs = gql `
+      type Query {
+        hello: String
+      }
+   `;
+
+    const resolvers = {
+      Query: {
+        hello: () => 'Hello world!',
+      },
+    };
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers
+    });
+
+    server.applyMiddleware({
+      app: app
+    });
+
+
+  // } catch {
+  //   (err) => {
+  //     console.error(err);
+  //   }
+  // }
 
 }
