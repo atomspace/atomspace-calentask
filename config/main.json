@@ -1,0 +1,16 @@
+{
+  "graphQL": {
+    "showInterface": true
+  },
+  "server": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "mongo":{
+    "host": "ds119060.mlab.com",
+    "port": 19060,
+    "db":"cherry-chat",
+    "dbuser": "cherry",
+    "dbpassword": "cherry_2010"
+  }
+}
