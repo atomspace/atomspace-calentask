@@ -39,7 +39,6 @@ function Main(props) {
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-            x
             <RightSidebar />
           </Paper>
         </Grid>

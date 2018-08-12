@@ -7,18 +7,12 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import apolloClient from 'apollo-boost';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressJwt, {
-  UnauthorizedError as Jwt401Error
-} from 'express-jwt';
-import {
-  graphql
-} from 'graphql';
-import expressGraphQL from 'express-graphql';
+import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
+// import { graphql } from 'graphql';
 import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
 import React from 'react';
@@ -26,23 +20,16 @@ import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
 import App from './components/App';
 import Html from './components/Html';
-import {
-  ErrorPageWithoutStyle
-} from './routes/error/ErrorPage';
+import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import {
-  start
-} from './data/graphql-schemas/schema'
+import { start } from './data/graphql-schemas/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
-import {
-  ApolloServer,
-  gql
-} from "apollo-server-express";
+import { ApolloServer, gql } from 'apollo-server-express';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -70,9 +57,11 @@ const app = express();
 // -----------------------------------------------------------------------------
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(bodyParser.json());
 
 //
@@ -147,8 +136,8 @@ app.get('*', async (req, res, next) => {
     // Universal HTTP client
     const fetch = createFetch(nodeFetch, {
       baseUrl: config.api.serverUrl,
-      cookie: req.headers.cookie,
-      graphql,
+      cookie: req.headers.cookie
+      // graphql,
     });
 
     // Global (context) variables that can be easily accessed from any React component
@@ -177,7 +166,9 @@ app.get('*', async (req, res, next) => {
     const scripts = new Set();
     const addChunk = chunk => {
       if (chunks[chunk]) {
-        chunks[chunk].forEach(asset => scripts.add(asset));
+        chunks[chunk].forEach(asset => {
+          scripts.add(asset);
+        });
       } else if (__DEV__) {
         throw new Error(`Chunk with name '${chunk}' cannot be found`);
       }

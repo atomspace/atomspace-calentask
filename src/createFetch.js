@@ -9,9 +9,6 @@
 
 /* @flow */
 
-import { graphql as graphqType, GraphQLSchema } from 'graphql';
-
-
 /**
  * Creates a wrapper function around the HTML5 Fetch API that provides
  * default arguments to fetch(...) and is intended to reduce the amount
@@ -19,8 +16,7 @@ import { graphql as graphqType, GraphQLSchema } from 'graphql';
  * https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch
  */
 function createFetch(
-  fetch,
-  { baseUrl, cookie, schema, graphql },
+  fetch
 ) {
   return async (url, options) => {
     return fetch(url, options);
