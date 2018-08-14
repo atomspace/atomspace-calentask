@@ -19,6 +19,7 @@ const styles = theme => ({
     position: 'relative',
     display: 'flex',
     width: '100%',
+    background: '#E0F7FA !important',
   },
   appBar: {
     position: 'absolute',
