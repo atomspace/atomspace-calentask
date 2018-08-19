@@ -25,9 +25,11 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import { start } from './data/graphql-schemas/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
+import expressGraphQL from 'express-graphql';
+import schema from './data/graphql-schemas/schema';
+import * as mongoose from 'mongoose';
 import config from './config';
 import { ApolloServer, gql } from 'apollo-server-express';
 
@@ -114,10 +116,29 @@ app.get(
 );
 
 //
-// Register API middleware
+// Mongoose connection
 // -----------------------------------------------------------------------------
 
-start(app);
+mongoose.connect(`mongodb://${config.mongodb.user}:${config.mongodb.pass}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`);
+
+const db = mongoose.connection;
+
+db.on('error', (err) => {
+  console.log(err);
+});
+
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+//
+// GraphQL Interface
+// -----------------------------------------------------------------------------
+
+app.use('/graphql', expressGraphQL({
+  schema: schema,
+  graphiql: true
+}));
 
 // //
 // // Register server-side rendering middleware
