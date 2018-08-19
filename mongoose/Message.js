@@ -5,7 +5,7 @@ let messageSchema = new mongoose.Schema({
     text: String,
     author: String,
     from: String
-}, { collection: "TodoList" });
+});
 
 let Message = mongoose.model('Message', messageSchema);
 

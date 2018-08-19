@@ -29,6 +29,23 @@ let schema = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'RootQueryType',
         fields: {
+            message: {
+                type: MessageType,
+                args: {
+                    room: {
+                        name: 'from',
+                        type: GraphQLString
+                    }
+                },
+                resolve: (root, {room}) => {
+                    return new Promise ((resolve, reject) => {
+                        Message.findOne({from: room}, (err, message) => {
+                            err ? reject(err) : resolve(message)
+                        })
+                    });
+                }
+            },
+
             messages: {
                 type: new GraphQLList(MessageType),
                 resolve: (root) => {
