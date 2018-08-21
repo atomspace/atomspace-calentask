@@ -8,7 +8,7 @@ import {
   GraphQLBoolean
 } from 'graphql/type';
 
-import Message from '../mongoose-schemas/Message';
+import {Message} from '../mongoose-models/Message';
 
 let MessageType = new GraphQLObjectType({
   name: 'Message',
