@@ -41,9 +41,14 @@ let schema = new GraphQLSchema ({
       },
       messages: {
         type: new GraphQLList(MessageType),
-        resolve: (root) => {
+        args: {
+          room: {
+            type: GraphQLString
+          }
+        },
+        resolve: (root, {room}) => {
           return new Promise ((resolve, reject) => {
-            Message.find((err, messages) => {
+            Message.find({from: room}, (err, messages) => {
               err ? reject(err) : resolve(messages);
             });
           });
