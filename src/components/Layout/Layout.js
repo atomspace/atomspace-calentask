@@ -15,14 +15,24 @@ import normalizeCss from 'normalize.css';
 import s from './Layout.css';
 import Header from '../Header';
 import Main from '../Main';
+import { gql, ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
+import { graphql, ApolloProvider } from 'react-apollo';
+import fetch from 'node-fetch';
+
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'http://localhost:3000/graphql', fetch }),
+  cache: new InMemoryCache(),
+});
 
 class Layout extends React.Component {
   render() {
     return (
-      <div>
-        <Header />
-        {this.props.children}
-      </div>
+      <ApolloProvider client={client}>
+        <div>
+          <Header />
+          {this.props.children}
+        </div>
+      </ApolloProvider>
     );
   }
 }

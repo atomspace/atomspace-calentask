@@ -4,7 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData/tileData';
+import {
+  mailFolderListItems,
+  otherMailFolderListItems,
+} from './tileData/tileData';
 import Avatar from '../img/man.svg';
 import s from './LeftSidebar.css';
 
@@ -63,7 +66,7 @@ class LeftSidebar extends React.Component {
           }}
           className={classes.drawer}
         >
-          <img className={s.img} src={Avatar} alt={'logo'} />
+          <img className={s.img} src={Avatar} alt="logo" />
           <List>{mailFolderListItems}</List>
           <Divider className={classes.divider} />
           <List>{otherMailFolderListItems}</List>
