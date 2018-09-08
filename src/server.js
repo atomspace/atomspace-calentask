@@ -12,14 +12,13 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-// import { graphql } from 'graphql';
 import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import App from './components/App';
-import Html from './components/Html';
+import App from './App';
+import Html from './Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
@@ -119,7 +118,7 @@ app.get(
 // Mongoose connection
 // -----------------------------------------------------------------------------
 
-mongoose.connect(`mongodb://${config.mongodb.user}:${config.mongodb.pass}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`);
+mongoose.connect(`mongodb://${config.mongodb.user}:${config.mongodb.pass}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 

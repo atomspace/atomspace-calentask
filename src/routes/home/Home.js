@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
-import Main from '../../components/Main/Main';
+import Main from './Main/Main';
 import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
 import moment from 'moment';
