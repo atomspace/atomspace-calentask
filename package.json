@@ -15,7 +15,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.51",
     "@material-ui/core": "^1.4.0",
-    "@material-ui/icons": "^1.1.0",
+    "@material-ui/icons": "^3.0.1",
     "@types/node-fetch": "^2.1.1",
     "apollo-boost": "^0.1.10",
     "body-parser": "^1.18.3",

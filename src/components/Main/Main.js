@@ -41,10 +41,10 @@ function Main(props) {
           </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>
+          {/* <Paper className={classes.paper}>
             x
             <RightSidebar />
-          </Paper>
+          </Paper> */}
         </Grid>
       </Grid>
     </div>

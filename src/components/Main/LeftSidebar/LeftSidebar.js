@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import { mailFolderListItems, otherMailFolderListItems } from './tileData/tileData';
-import Avatar from '../img/man.svg';
+import Avatar from '../../../../public/man.svg';
 import s from './LeftSidebar.css';
 
 const drawerWidth = 240;
