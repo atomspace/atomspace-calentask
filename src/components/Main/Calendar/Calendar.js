@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
+import TimeFrame from '../TimeFrame/TimeFrame';
 
 // TODO: Need better naming
 const days = [
+  // {
+  //   dayOfWeek: null,
+  //   day: null,
+  // },
   {
     dayOfWeek: 'Monday',
     day: 1,
@@ -63,13 +66,15 @@ const CalendarHeader = ({ classes }) => {
 
   // TODO: Add stylings for dayOfWeek and day
   const dayElements = days.map(day => (
-    <Grid item key={day.day}>
+    <Grid md={1} item key={day.day}>
       <div>{day.dayOfWeek}</div>
       <div>{day.day}</div>
+      <Grid md={2}>
+        <CalendarTable />
+      </Grid>
     </Grid>
   ));
 
-  console.log(days)
   return (
     <Grid container className={classes}>
       {dayElements}
@@ -83,7 +88,7 @@ const CalendarTable = ({ classes, days }) => {
     arr.push(
       <div>
         <Grid item key={i}>
-          {`Some day ${i}`}
+          {`Some`}
         </Grid>
       </div>,
     );
@@ -102,11 +107,11 @@ const Calendar = ({ classes }) => {
 
   return (
     <Grid className={classes.root}>
-      <Grid>
-        <CalendarHeader />
+      <Grid md={1}>
+        <TimeFrame />
       </Grid>
-      <Grid md={2}>
-        <CalendarTable classes={classes.table} days={days} />
+      <Grid>
+        <CalendarHeader classes={classes.header} />
       </Grid>
     </Grid>
   );
