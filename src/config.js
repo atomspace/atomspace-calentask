@@ -19,6 +19,15 @@ module.exports = {
   // Node.js app
   port: process.env.PORT || 3000,
 
+  //MongoDB Settins
+  mongodb: {
+    user: 'cherry',
+    pass: 'cherry_2010',
+    host: 'ds119060.mlab.com',
+    port: '19060',
+    db: 'cherry-chat'
+  },
+
   // https://expressjs.com/en/guide/behind-proxies.html
   trustProxy: process.env.TRUST_PROXY || 'loopback',
 

@@ -1,121 +1,65 @@
 import {
-  makeExecutableSchema
-} from 'graphql-tools';
-// import {
-//   MongoClient,
-//   ObjectId
-// } from 'mongodb';
-import {
-  ApolloServer,
-  gql
-} from "apollo-server-express";
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLSchema,
+  GraphQLString,
+  GraphQLList,
+  GraphQLInt,
+  GraphQLBoolean,
+} from 'graphql/type';
 
-export const start = async (app) => {
-  // try {
-    // const db = await MongoClient.connect('mongodb://cherry:cherry_2010@ds119060.mlab.com:19060/cherry-chat');
-    
-    // const Messages = db.collection('messages');
-    // console.log(db.collection('messages'));
-    // const Users = db.collection('users');
-    // const Rooms = db.collection('rooms');
+import { Message } from '../mongoose-models/Message';
 
-  //   const prepare = (obj) => {
-  //     obj._id = obj._id.toString();
-  //     return obj;
-  //   }
+const prepare = o => {
+  o.id = toString(o._id);
+};
 
-    //     const typeDefs = [`
-    //         type Query {
-    //     user(_id: String): Message
-    //     room(_id: String): Room
-    //     message(_id: String): Message
-    //     users: [User]
-    //     rooms: [Room]
-    //     messages: [Message]
-    // }
+const MessageType = new GraphQLObjectType({
+  name: 'Message',
+  fields: () => ({
+    text: { type: GraphQLString },
+    from: { type: GraphQLString },
+    author: { type: GraphQLString },
+    time: { type: GraphQLString },
+    id: { type: GraphQLString },
+  }),
+});
 
-    // type User {
-    //     _id: String
-    //     username: String
-    //     name: String
-    //     password: String
-    // }
-
-    // type Room {
-    //     _id: String
-    //     roomName: String
-    //     password: String
-    // }
-
-    // type Message {
-    //     _id: String
-    //     text: String
-    //     from: String
-    //     author: String
-    //     time: String
-    // }
-
-    // schema {
-    //     query: Query
-    // }
-    // `]
-    //     const resolvers = {
-    //       Query: {
-    //         room: async (root, {
-    //           _id
-    //         }) => {
-    //           return prepare(await Rooms.findOne(ObjectId(_id)))
-    //         },
-    //         rooms: async () => {
-    //           return (await Rooms.find({}).toArray()).map(prepare)
-    //         },
-    //         message: async (root, {
-    //           _id
-    //         }) => {
-    //           return prepare(await Messages.findOne(ObjectId(_id)))
-    //         },
-    //         messages: async (root, {
-    //           _id
-    //         }) => {
-    //           return (await Messages.find({}).toArray()).map(prepare)
-    //         },
-    //         user: async (root, {
-    //           _id
-    //         }) => {
-    //           return prepare(await Users.findOne(ObjectId(_id)))
-    //         },
-    //         users: async () => {
-    //           return (await Users.find({}).toArray()).map(prepare)
-    //         }
-    //       }
-    //     }
-
-
-    const typeDefs = gql `
-      type Query {
-        hello: String
-      }
-   `;
-
-    const resolvers = {
-      Query: {
-        hello: () => 'Hello world!',
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    message: {
+      type: MessageType,
+      args: {
+        room: {
+          type: GraphQLString,
+        },
       },
-    };
-    const server = new ApolloServer({
-      typeDefs,
-      resolvers
-    });
+      resolve: (root, { room }) =>
+        new Promise((resolve, reject) => {
+          Message.findOne({ from: room }, (err, message) => {
+            err ? reject(err) : resolve(message);
+          });
+        }),
+    },
+    messages: {
+      type: new GraphQLList(MessageType),
+      args: {
+        room: {
+          type: GraphQLString,
+        },
+      },
+      resolve: (root, { room }) => new Promise((resolve, reject) => {
+        Message.find({ from: room }, (err, messages) => {
+          err ? reject(err) : resolve(messages);
+        });
+      })
+    }
+  }
+});
 
-    server.applyMiddleware({
-      app: app
-    });
+const schema = new GraphQLSchema({
+  query: RootQuery
+});
 
-
-  // } catch {
-  //   (err) => {
-  //     console.error(err);
-  //   }
-  // }
-
-}
+export default schema;
