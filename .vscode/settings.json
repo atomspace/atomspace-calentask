@@ -6,7 +6,6 @@
   "workbench.iconTheme": "vscode-icons",
   "tslint.enable": false,
   "editor.formatOnSave": false,
-  "window.zoomLevel": 1,
   "liveServer.settings.donotShowInfoMsg": true,
   "explorer.confirmDelete": false,
   "gitlens.advanced.messages": {
