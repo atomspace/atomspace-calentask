@@ -24,14 +24,6 @@ yarn-error.log*
 
 # Editors and IDEs
 .idea
-<<<<<<< HEAD
-=======
-.vscode
-.vscode/settings.json
-.vscode/tasks.json
-.vscode/launch.json
-.vscode/extensions.json
->>>>>>> dev-misha
 
 # Misc
 .DS_Store
