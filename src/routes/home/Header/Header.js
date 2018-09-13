@@ -28,6 +28,7 @@ const styles = {
   },
   appbar: {
     background: '#80cbc4',
+    marginBottom: 10,
   },
   flex: {
     flex: 1,

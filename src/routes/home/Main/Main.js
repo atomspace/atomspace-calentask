@@ -7,6 +7,7 @@ import LeftSidebar from './LeftSidebar/LeftSidebar';
 import RightSidebar from './RightSidebar/RightSidebar';
 import WeekHeader from './WeekHeader/WeekHeader';
 import TimeFrame from './TimeFrame/TimeFrame';
+import Calendar from './Calendar/Calendar';
 
 const styles = theme => ({
   root: {
@@ -17,6 +18,7 @@ const styles = theme => ({
     textAlign: 'left',
     color: theme.palette.text.secondary,
     height: '100%',
+    background: '#E0F7FA',
   },
 });
 
@@ -33,14 +35,16 @@ function Main(props) {
         </Grid>
         <Grid item xs={8}>
           <Paper className={classes.paper}>
-            <WeekHeader />
-            <TimeFrame />
+            {/* <WeekHeader />
+            <TimeFrame /> */}
+            <Calendar />
           </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>
+          {/* <Paper className={classes.paper}>
+            x
             <RightSidebar />
-          </Paper>
+          </Paper> */}
         </Grid>
       </Grid>
     </div>
