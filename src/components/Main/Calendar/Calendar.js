@@ -47,6 +47,7 @@ const styles = () => ({
   },
   header: {
     justifyContent: 'space-between',
+    paddingLeft: '65px',
   },
   table: {
     flexDirection: 'column',
@@ -58,6 +59,10 @@ const styles = () => ({
   blockin: {
     paddingBottom: '30px',
     borderBottom: '1px outset black',
+  },
+  timeframe: {
+    position: 'absolute',
+    paddingTop: '43px',
   },
 });
 
@@ -107,8 +112,8 @@ const Calendar = ({ classes }) => {
 
   return (
     <Grid className={classes.root}>
-      <Grid md={1}>
-        <TimeFrame />
+      <Grid>
+        <TimeFrame classes={classes.timeframe} />
       </Grid>
       <Grid>
         <CalendarHeader classes={classes.header} />
