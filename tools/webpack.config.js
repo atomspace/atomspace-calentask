@@ -170,6 +170,10 @@ const config = {
             },
           },
 
+          {
+            loader: 'sass-loader'
+          }
+
           // Compile Less to CSS
           // https://github.com/webpack-contrib/less-loader
           // Install dependencies before uncommenting: yarn add --dev less-loader less

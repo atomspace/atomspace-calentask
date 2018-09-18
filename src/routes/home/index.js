@@ -9,16 +9,16 @@
 
 import React from 'react';
 import Home from './Home';
-import Layout from './Layout';
+
 
 async function action({ fetch }) {
   return {
     title: 'React Starter Kit',
     chunks: ['home'],
     component: (
-      <Layout>
+      <div>
         <Home />
-      </Layout>
+      </div>
     ),
   };
 }

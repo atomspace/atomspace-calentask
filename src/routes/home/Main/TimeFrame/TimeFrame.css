@@ -1,8 +1,0 @@
-.TimeFrame {
-  display: flex !important;
-  flex-direction: column;
-}
-
-.hour {
-  margin-bottom: 15px;
-}
