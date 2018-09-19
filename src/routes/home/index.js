@@ -10,7 +10,6 @@
 import React from 'react';
 import Home from './Home';
 
-
 async function action({ fetch }) {
   return {
     title: 'React Starter Kit',

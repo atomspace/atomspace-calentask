@@ -8,14 +8,16 @@
  */
 
 import React, { Component } from 'react';
-import './Home.scss';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
+
+import s from './Home.scss';
 
 class Home extends Component {
   render() {
     return (
-      <p className='text'>Hello World!</p>
+      <p className={s.text}>Hello World!</p>
     );
   }
 }
 
-export default Home;
+export default withStyles(s)(Home);
