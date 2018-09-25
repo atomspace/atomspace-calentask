@@ -18,9 +18,9 @@ class Home extends Component {
 
     for(var i = 0; i < 34; i++) {
       arr.push(
-        <div className={s.flex}>
-          <div class={s.boxtime}>00:00</div>
-          <div class={`${s.box} ${s.wide}`}>
+        <div key={i} className={s.flex}>
+          <div className={s.boxtime}>00:00</div>
+          <div className={`${s.box} ${s.wide}`}>
 
           </div>
         </div>
