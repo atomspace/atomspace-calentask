@@ -1,7 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # Dependencies
-node_modules/*
+node_modules
+
 package-lock.json
 
 # Compiled output
@@ -9,6 +10,9 @@ build/
 
 # Runtime data
 database.sqlite
+
+#Package-lock file
+package-lock.json
 
 # Test coverage
 coverage
@@ -20,11 +24,6 @@ yarn-error.log*
 
 # Editors and IDEs
 .idea
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # Misc
 .DS_Store

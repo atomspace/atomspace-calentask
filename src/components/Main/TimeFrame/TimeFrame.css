@@ -1,9 +1,0 @@
-.TimeFrame {
-  border: 1px outset black;
-  display: flex !important;
-  flex-direction: column;
-}
-
-.hour {
-  display: flex;
-}

@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom';
 import deepForceUpdate from 'react-deep-force-update';
 import queryString from 'query-string';
 import { createPath } from 'history/PathUtils';
-import App from './components/App';
+import App from './App';
 import createFetch from './createFetch';
 import history from './history';
 import { updateMeta } from './DOMUtils';
