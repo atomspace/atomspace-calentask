@@ -18,7 +18,7 @@ class Home extends Component {
 
     for(var i = 0; i < 34; i++) {
       arr.push(
-        <div class="flex">
+        <div className={s.flex}>
           <div class={s.boxtime}>00:00</div>
           <div class={`${s.box} ${s.wide}`}>
 
@@ -30,7 +30,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.displayTime());
     return (
       <div>
         
