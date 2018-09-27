@@ -31,6 +31,7 @@ import schema from './data/graphql-schemas/schema';
 import * as mongoose from 'mongoose';
 import config from './config';
 import { ApolloServer, gql } from 'apollo-server-express';
+import { Event } from './data/mongoose-models/Event';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -129,6 +130,13 @@ db.on('error', (err) => {
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
+
+db.collection('events');
+
+// Event.findOne({name: "Misha"}, (err, event) => {
+//   if (err) throw err;
+//   console.log(event);
+// });
 
 //
 // GraphQL Interface

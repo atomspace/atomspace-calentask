@@ -9,15 +9,27 @@
 
 import React from 'react';
 import Home from './Home';
+import { ApolloProvider } from 'react-apollo';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
+import fetch from 'node-fetch';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const client = new ApolloClient({
+  link: new HttpLink({uri: 'http://localhost:3000/graphql', fetch}),
+  cache: new InMemoryCache()
+});
 
 async function action({ fetch }) {
   return {
     title: 'React Starter Kit',
     chunks: ['home'],
     component: (
-      <div>
-        <Home />
-      </div>
+      <ApolloProvider client={client} >
+        <div>
+          <Home />
+        </div>
+      </ApolloProvider>
     ),
   };
 }

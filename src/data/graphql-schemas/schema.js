@@ -8,52 +8,82 @@ import {
   GraphQLBoolean,
 } from 'graphql/type';
 
-import { Message } from '../mongoose-models/Message';
+import { Event } from '../mongoose-models/Event';
+import { ObjectId } from 'mongodb';
 
-const prepare = o => {
-  o.id = toString(o._id);
-};
-
-const MessageType = new GraphQLObjectType({
-  name: 'Message',
+const EventType = new GraphQLObjectType({
+  name: 'Event',
   fields: () => ({
-    text: { type: GraphQLString },
-    from: { type: GraphQLString },
-    author: { type: GraphQLString },
-    time: { type: GraphQLString },
-    id: { type: GraphQLString },
+    id: {type: GraphQLString},
+    name: {type: GraphQLString},
+    start_time: {type: GraphQLString},
+    end_time: {type: GraphQLString},
+    created_time: {type: GraphQLString},
+    author: {type: GraphQLString},
+    deleted: {type: GraphQLString},
+    deleted_time: {type: GraphQLString},
+    description: {type: GraphQLString},
+    address: {type: GraphQLString}
   }),
 });
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    message: {
-      type: MessageType,
+    // message: {
+    //   type: MessageType,
+    //   args: {
+    //     room: {
+    //       type: GraphQLString,
+    //     },
+    //   },
+    //   resolve: (root, { room }) =>
+    //     new Promise((resolve, reject) => {
+    //       Message.findOne({ from: room }, (err, message) => {
+    //         err ? reject(err) : resolve(message);
+    //       });
+    //     }),
+    // },
+    // messages: {
+    //   type: new GraphQLList(MessageType),
+    //   args: {
+    //     room: {
+    //       type: GraphQLString,
+    //     },
+    //   },
+    //   resolve: (root, { room }) => new Promise((resolve, reject) => {
+    //     Message.find({ from: room }, (err, messages) => {
+    //       err ? reject(err) : resolve(messages);
+    //     });
+    //   })
+    // }
+    events: {
+      type: new GraphQLList(EventType),
       args: {
-        room: {
-          type: GraphQLString,
-        },
+        name: {
+          type: GraphQLString
+        }
       },
-      resolve: (root, { room }) =>
+      resolve: (root, { name }) =>
         new Promise((resolve, reject) => {
-          Message.findOne({ from: room }, (err, message) => {
-            err ? reject(err) : resolve(message);
-          });
-        }),
+          Event.find({name},(err, event) => {
+            err ? reject(err) : resolve(event);
+          })
+        })
     },
-    messages: {
-      type: new GraphQLList(MessageType),
+    event: {
+      type: EventType,
       args: {
-        room: {
-          type: GraphQLString,
-        },
+        id: {
+          type: GraphQLString
+        }
       },
-      resolve: (root, { room }) => new Promise((resolve, reject) => {
-        Message.find({ from: room }, (err, messages) => {
-          err ? reject(err) : resolve(messages);
-        });
-      })
+      resolve: (root, { id }) =>
+        new Promise((resolve, reject) => {
+          Event.findOne(ObjectId(id),(err, event) => {
+            err ? reject(err) : resolve(event);
+          })
+        })
     }
   }
 });
