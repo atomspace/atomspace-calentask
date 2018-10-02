@@ -1,0 +1,68 @@
+.flex {
+  display: flex;
+}
+
+.con_box__vert .box {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.con_box__hor .box {
+  padding: 0.6em;
+  width: 4em;
+  border-bottom: 1px solid gray;
+}
+
+.Calendar {
+  margin-left: 20%;
+}
+
+.abs {
+  position: fixed;
+  /* left: 10px; */
+  background: white;
+  z-index: 100;
+  width: 100%;
+}
+
+.abs>div:nth-child(1) {
+  border: 0;
+}
+
+.padd {
+  padding-top: 50px;
+}
+
+.boxtime {
+  padding: 10px;
+  line-height: 20px;
+  position: relative;
+  top: 20px;
+  width: 50px;
+  text-align: center;
+}
+
+.abs_div {
+  position: absolute;
+  height: 3em;
+  width: 8em;
+  left: 5.2em;
+  z-index: 50;
+  height: 100%;
+}
+
+.wide {
+  width: 100%;
+}
+
+.flex_col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col {
+  height: 137%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+  margin-left: 20%;
+}
