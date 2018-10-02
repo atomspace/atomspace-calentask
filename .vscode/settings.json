@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-}
-=======
   "vsicons.projectDetection.disableDetect": true,
   "files.autoSave": "off",
   "workbench.panel.location": "bottom",
@@ -59,4 +56,3 @@
     "gitDecoration.modifiedResourceForeground": "#109e23"
   }
 }
->>>>>>> e4c9c76c9a0807df8f0adad3d8d4d72f659ff7a8

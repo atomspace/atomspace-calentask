@@ -65,6 +65,9 @@ class Calendar extends Component {
           <div className={s.box}>
             Понедельник
           </div>
+          {/* <div style={{'margin-left': '40%'}} className={s.box}>
+            Понедельник
+          </div> */}
         </div>
       </div>
 

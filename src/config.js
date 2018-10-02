@@ -19,13 +19,11 @@ module.exports = {
   // Node.js app
   port: process.env.PORT || 3000,
 
-  //MongoDB Settins
+  // MongoDB Settins
   mongodb: {
-    user: 'root',
-    pass: 'password123',
-    host: 'ds117931.mlab.com',
-    port: '17931',
-    db: 'calentask'
+    host: 'ec2-18-219-105-90.us-east-2.compute.amazonaws.com',
+    port: '27017',
+    db: 'calentask',
   },
 
   // https://expressjs.com/en/guide/behind-proxies.html

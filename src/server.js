@@ -119,7 +119,7 @@ app.get(
 // Mongoose connection
 // -----------------------------------------------------------------------------
 
-mongoose.connect(`mongodb://${config.mongodb.user}:${config.mongodb.pass}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`, { useNewUrlParser: true });
+mongoose.connect(`mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`, {useNewUrlParser: true });
 
 const db = mongoose.connection;
 
