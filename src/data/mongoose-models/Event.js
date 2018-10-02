@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 
 let EventSchema = new mongoose.Schema({
-    id: String,
     name: String,
     start_time: Date,
     end_time: Date,

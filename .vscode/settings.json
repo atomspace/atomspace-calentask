@@ -3,7 +3,7 @@
 }
 =======
   "vsicons.projectDetection.disableDetect": true,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
   "workbench.panel.location": "bottom",
   "editor.accessibilitySupport": "off",
   "workbench.iconTheme": "vscode-icons",

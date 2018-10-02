@@ -21,11 +21,11 @@ module.exports = {
 
   //MongoDB Settins
   mongodb: {
-    user: 'cherry',
-    pass: 'cherry_2010',
-    host: 'ds119060.mlab.com',
-    port: '19060',
-    db: 'cherry-chat'
+    user: 'root',
+    pass: 'password123',
+    host: 'ds117931.mlab.com',
+    port: '17931',
+    db: 'calentask'
   },
 
   // https://expressjs.com/en/guide/behind-proxies.html
