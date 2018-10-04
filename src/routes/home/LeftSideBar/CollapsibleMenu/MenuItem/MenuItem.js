@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Task.scss'
+import s from './MenuItem.scss'
 
-class Task extends Component {
+class MenuItem extends Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class Task extends Component {
   }
 }
 
-export default withStyles(s)(Task);
+export default withStyles(s)(MenuItem);
