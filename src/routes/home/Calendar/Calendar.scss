@@ -9,18 +9,20 @@
 
 .con_box__hor .box {
   padding: 0.6em;
-  width: 4em;
+  width: 100%;
+  margin-right: 37px;
   border-bottom: 1px solid gray;
 }
 
 .Calendar {
-  margin-left: 20%;
+  margin-left: 15%;
+  position: relative;
 }
 
 .abs {
   position: fixed;
   /* left: 10px; */
-  background: white;
+  background: #757575;
   z-index: 100;
   width: 100%;
 }
@@ -57,12 +59,46 @@
 
 .flex_col {
   display: flex;
-  flex-direction: column;
 }
 
-.col {
-  height: 137%;
+.colMonday {
+  height: 705px;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
-  margin-left: 20%;
+}
+
+.colTuesday {
+  height: 204%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colWednesday {
+  height: 705px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colThursday {
+  height: 705px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colFriday {
+  height: 705px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colSaturday {
+  height: 705px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colSunday {
+  height: 705px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
 }

@@ -3,8 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './LeftSideBar.scss'
 import Avatar from './AvatarComponent/Avatar';
 import Weather from './WeatherComponent/Weather';
-import Messenger from './MessengersComponent/Messenger';
-import Task from './TasksComponent/Task';
+import CollapsibleMenu from './CollapsibleMenu/CollapsibleMenu';
 
 class LeftSideBar extends Component {
   render() {
@@ -12,8 +11,7 @@ class LeftSideBar extends Component {
       <div className={s.LeftSideBar}>
         <Avatar />
         <Weather />
-        <Messenger />
-        <Task />
+        <CollapsibleMenu />
       </div>
     );
   }

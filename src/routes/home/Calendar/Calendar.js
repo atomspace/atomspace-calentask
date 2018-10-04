@@ -65,11 +65,35 @@ class Calendar extends Component {
           <div className={s.box}>
             Понедельник
           </div>
+          <div className={s.box}>
+            Вторник
+          </div>
+          <div className={s.box}>
+            Среда
+          </div>
+          <div className={s.box}>
+            Четверг
+          </div>
+          <div className={s.box}>
+            Пятница
+          </div>
+          <div className={s.box}>
+            Суббота
+          </div>
+          <div className={s.box}>
+            Воскресенье
+          </div>
         </div>
       </div>
 
       <div>
-        <div className={`${s.abs_div} ${s.col}`}>
+        <div className={`${s.abs_div} ${s.colMonday}`}>
+        <div className={`${s.abs_div} ${s.col} ${s.colTuesday}`}></div>
+        <div className={`${s.abs_div} ${s.col} ${s.colWednesday}`}></div>
+        <div className={`${s.abs_div} ${s.col} ${s.colThursday}`}></div>
+        <div className={`${s.abs_div} ${s.col} ${s.colThursday}`}></div>
+        <div className={`${s.abs_div} ${s.col} ${s.colSaturday}`}></div>
+        <div className={`${s.abs_div} ${s.col} ${s.colSunday}`}></div>
 
         </div>
       </div>
