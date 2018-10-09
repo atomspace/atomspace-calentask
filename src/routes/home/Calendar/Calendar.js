@@ -88,12 +88,12 @@ class Calendar extends Component {
 
       <div>
         <div className={`${s.abs_div} ${s.colMonday}`}>
-        <div className={`${s.abs_div} ${s.col} ${s.colTuesday}`}></div>
-        <div className={`${s.abs_div} ${s.col} ${s.colWednesday}`}></div>
-        <div className={`${s.abs_div} ${s.col} ${s.colThursday}`}></div>
-        <div className={`${s.abs_div} ${s.col} ${s.colThursday}`}></div>
-        <div className={`${s.abs_div} ${s.col} ${s.colSaturday}`}></div>
-        <div className={`${s.abs_div} ${s.col} ${s.colSunday}`}></div>
+        <div className={`${s.abs_div} ${s.colTuesday}`}></div>
+        <div className={`${s.abs_div} ${s.colWednesday}`}></div>
+        <div className={`${s.abs_div} ${s.colThursday}`}></div>
+        <div className={`${s.abs_div} ${s.colFriday}`}></div>
+        <div className={`${s.abs_div} ${s.colSaturday}`}></div>
+        <div className={`${s.abs_div} ${s.colSunday}`}></div>
 
         </div>
       </div>
