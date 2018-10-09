@@ -54,7 +54,7 @@ class Calendar extends Component {
   render() {
     return(
       <div className={s.Calendar}>
-        <div className={`${s.flex} ${s.con_box__hor} ${s.abs}`}>
+        <div style={{top: '3em'}} className={`${s.flex} ${s.con_box__hor} ${s.abs}`}>
         <div>
           <div className={s.box} style={{border: 0, marginLeft: '13%'}}>333</div>
           <div>
@@ -86,7 +86,7 @@ class Calendar extends Component {
         </div>
       </div>
 
-      <div>
+      <div style={{top: '2em'}}>
         <div className={`${s.abs_div} ${s.colMonday}`}>
         <div className={`${s.abs_div} ${s.colTuesday}`}></div>
         <div className={`${s.abs_div} ${s.colWednesday}`}></div>

@@ -33,8 +33,8 @@ class Home extends Component {
     console.log(this.props);
     return (
       <div>
-        <LeftSideBar />
         <Header />
+        <LeftSideBar />
         <Calendar />
       </div>
     );
