@@ -8,20 +8,28 @@
  */
 
 import React from 'react';
+import Home from './Home';
+import { ApolloProvider } from 'react-apollo';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
+import fetch from 'node-fetch';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const client = new ApolloClient({
+  link: new HttpLink({uri: 'http://localhost:3000/graphql', fetch}),
+  cache: new InMemoryCache()
+});
 
 async function action({ fetch }) {
-  const resp = await fetch('/graphql', {
-    body: JSON.stringify({
-      query: '{news{title,link,content}}',
-    }),
-  });
-  const { data } = await resp.json();
-  if (!data || !data.news) throw new Error('Failed to load the news feed.');
   return {
     title: 'React Starter Kit',
     chunks: ['home'],
     component: (
-        <Home />
+      <ApolloProvider client={client} >
+        <div>
+          <Home />
+        </div>
+      </ApolloProvider>
     ),
   };
 }

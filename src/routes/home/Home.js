@@ -7,43 +7,38 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Home.css';
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 
-class Home extends React.Component {
-  static propTypes = {
-    news: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        link: PropTypes.string.isRequired,
-        content: PropTypes.string,
-      }),
-    ).isRequired,
-  };
+import LeftSideBar from './LeftSideBar/LeftSideBar';
+import Header from './Header/Header';
+import Calendar from './Calendar/Calendar';
+import s from './Home.scss';
 
+const getEvent = gql`
+  {
+    event(id: "5baa638dfb6fc011c0094f53") {
+      id
+      name
+      description
+      address
+    }
+  }
+`
+
+class Home extends Component {
   render() {
+    console.log(this.props);
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>React.js News</h1>
-          {this.props.news.map(item => (
-            <article key={item.link} className={s.newsItem}>
-              <h1 className={s.newsTitle}>
-                <a href={item.link}>{item.title}</a>
-              </h1>
-              <div
-                className={s.newsDesc}
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: item.content }}
-              />
-            </article>
-          ))}
-        </div>
+      <div>
+        <LeftSideBar />
+        <Header />
+        <Calendar />
       </div>
     );
   }
 }
 
-export default withStyles(s)(Home);
+export default graphql(getEvent)(withStyles(s)(Home));

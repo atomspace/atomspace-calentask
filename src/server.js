@@ -7,32 +7,31 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import apolloClient from 'apollo-boost';
-import gql from 'graphql-tag';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-import { graphql } from 'graphql';
-import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import App from './components/App';
-import Html from './components/Html';
+import App from './App';
+import Html from './Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import models from './data/models';
-import schema from './data/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
+import expressGraphQL from 'express-graphql';
+import schema from './data/graphql-schemas/schema';
+import * as mongoose from 'mongoose';
 import config from './config';
+import { ApolloServer, gql } from 'apollo-server-express';
+import { Event } from './data/mongoose-models/Event';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -53,14 +52,18 @@ const app = express();
 // If you are using proxy from external machine, you can set TRUST_PROXY env
 // Default is to trust proxy headers only from loopback interface.
 // -----------------------------------------------------------------------------
-app.set('trust proxy', config.trustProxy);
+// app.set('trust proxy', config.trustProxy);
 
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(bodyParser.json());
 
 //
@@ -101,28 +104,52 @@ app.get(
   }),
   (req, res) => {
     const expiresIn = 60 * 60 * 24 * 180; // 180 days
-    const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-    res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
+    const token = jwt.sign(req.user, config.auth.jwt.secret, {
+      expiresIn
+    });
+    res.cookie('id_token', token, {
+      maxAge: 1000 * expiresIn,
+      httpOnly: true
+    });
     res.redirect('/');
   },
 );
 
 //
-// Register API middleware
+// Mongoose connection
 // -----------------------------------------------------------------------------
-app.use(
-  '/graphql',
-  expressGraphQL(req => ({
-    schema,
-    graphiql: __DEV__,
-    rootValue: { request: req },
-    pretty: __DEV__,
-  })),
-);
+
+mongoose.connect(`mongodb://${config.mongodb.user}:${config.mongodb.pass}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.db}`, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+
+db.on('error', (err) => {
+  console.log(err);
+});
+
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+db.collection('events');
+
+// Event.findOne({name: "Misha"}, (err, event) => {
+//   if (err) throw err;
+//   console.log(event);
+// });
 
 //
-// Register server-side rendering middleware
+// GraphQL Interface
 // -----------------------------------------------------------------------------
+
+app.use('/graphql', expressGraphQL({
+  schema: schema,
+  graphiql: true
+}));
+
+// //
+// // Register server-side rendering middleware
+// // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
   try {
     const css = new Set();
@@ -137,9 +164,8 @@ app.get('*', async (req, res, next) => {
     // Universal HTTP client
     const fetch = createFetch(nodeFetch, {
       baseUrl: config.api.serverUrl,
-      cookie: req.headers.cookie,
-      schema,
-      graphql,
+      cookie: req.headers.cookie
+      // graphql,
     });
 
     // Global (context) variables that can be easily accessed from any React component
@@ -168,7 +194,9 @@ app.get('*', async (req, res, next) => {
     const scripts = new Set();
     const addChunk = chunk => {
       if (chunks[chunk]) {
-        chunks[chunk].forEach(asset => scripts.add(asset));
+        chunks[chunk].forEach(asset => {
+          scripts.add(asset);
+        });
       } else if (__DEV__) {
         throw new Error(`Chunk with name '${chunk}' cannot be found`);
       }
@@ -216,12 +244,9 @@ app.use((err, req, res, next) => {
 //
 // Launch the server
 // -----------------------------------------------------------------------------
-const promise = models.sync().catch(err => console.error(err.stack));
 if (!module.hot) {
-  promise.then(() => {
-    app.listen(config.port, () => {
-      console.info(`The server is running at http://localhost:${config.port}/`);
-    });
+  app.listen(config.port, () => {
+    console.info(`The server is running at http://localhost:${config.port}/`);
   });
 }
 

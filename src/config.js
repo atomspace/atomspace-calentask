@@ -19,6 +19,15 @@ module.exports = {
   // Node.js app
   port: process.env.PORT || 3000,
 
+  //MongoDB Settins
+  mongodb: {
+    user: 'root',
+    pass: 'password123',
+    host: 'ds117931.mlab.com',
+    port: '17931',
+    db: 'calentask'
+  },
+
   // https://expressjs.com/en/guide/behind-proxies.html
   trustProxy: process.env.TRUST_PROXY || 'loopback',
 

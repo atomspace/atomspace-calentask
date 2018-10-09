@@ -1,0 +1,113 @@
+.flex {
+  display: flex;
+}
+
+.con_box__vert .box {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.con_box__hor .box {
+  padding: 0.6em;
+  width: 100%;
+  margin-right: 37px;
+  border-bottom: 1px solid gray;
+}
+
+.Calendar {
+  margin-left: 15%;
+  position: relative;
+}
+
+.abs {
+  position: fixed;
+  /* left: 10px; */
+  background: #757575;
+  z-index: 100;
+  width: 100%;
+}
+
+.abs>div:nth-child(1) {
+  border: 0;
+}
+
+.padd {
+  padding-top: 50px;
+}
+
+.boxtime {
+  padding: 10px;
+  line-height: 20px;
+  position: relative;
+  top: 3px;
+  width: 50px;
+  text-align: center;
+}
+
+.abs_div {
+  position: absolute;
+  height: 3em;
+  width: 8em;
+  left: 5.2em;
+  z-index: 50;
+  height: 100%;
+}
+
+.wide {
+  width: 100%;
+}
+
+.flex_col {
+  display: flex;
+}
+
+.colMonday {
+  height: 100%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colTuesday {
+  left: 132px;
+  width: 9em;
+  height: 100%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colWednesday {
+  left: 280px;
+  width: 6em;
+  height: 100%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colThursday {
+  height: 100%;
+  left: 382px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colFriday {
+  height: 100%;
+  left: 520px;
+  width: 7em;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colSaturday {
+  height: 100%;
+  left: 641px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+.colSunday {
+  height: 100%;
+  left: 777px;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
