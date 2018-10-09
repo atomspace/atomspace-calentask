@@ -10,10 +10,13 @@
 .con_box__hor .box {
   padding: 0.6em;
   width: 100%;
-  margin-right: 37px;
+  text-align: center;
   border-bottom: 1px solid gray;
 }
 
+.marginLeft{
+  margin-left: 30px;
+}
 .Calendar {
   margin-left: 15%;
   position: relative;
@@ -59,6 +62,7 @@
 
 .flex_col {
   display: flex;
+  width: 80%;
 }
 
 .colMonday {
