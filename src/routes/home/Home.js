@@ -9,24 +9,11 @@
 
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { gql } from 'apollo-boost';
-import { graphql } from 'react-apollo';
 
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 import Header from './Header/Header';
 import Calendar from './Calendar/Calendar';
 import s from './Home.scss';
-
-const getEvent = gql`
-  {
-    event(id: "5baa638dfb6fc011c0094f53") {
-      id
-      name
-      description
-      address
-    }
-  }
-`
 
 class Home extends Component {
   render() {
@@ -41,4 +28,4 @@ class Home extends Component {
   }
 }
 
-export default graphql(getEvent)(withStyles(s)(Home));
+export default withStyles(s)(Home);

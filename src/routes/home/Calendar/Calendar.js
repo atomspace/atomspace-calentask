@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 
 import s from './Calendar.scss';
+
+const getEvent = gql`
+  {
+    event(id: "5baa638dfb6fc011c0094f53") {
+      id
+      name
+      description
+      address
+    }
+  }
+`
 
 const day = [
   {
@@ -106,4 +119,4 @@ class Calendar extends Component {
   }
 }
 
-export default withStyles(s)(Calendar);
+export default graphql(getEvent)(withStyles(s)(Calendar));
