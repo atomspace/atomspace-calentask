@@ -40,7 +40,7 @@
   padding: 10px;
   line-height: 20px;
   position: relative;
-  top: 20px;
+  top: 3px;
   width: 50px;
   text-align: center;
 }
@@ -63,43 +63,52 @@
 }
 
 .colMonday {
-  height: 705px;
+  height: 100%;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colTuesday {
-  height: 204%;
+  left: 132px;
+  width: 9em;
+  height: 100%;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colWednesday {
-  height: 705px;
+  left: 280px;
+  width: 6em;
+  height: 100%;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colThursday {
-  height: 705px;
+  height: 100%;
+  left: 382px;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colFriday {
-  height: 705px;
+  height: 100%;
+  left: 520px;
+  width: 7em;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colSaturday {
-  height: 705px;
+  height: 100%;
+  left: 641px;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
 
 .colSunday {
-  height: 705px;
+  height: 100%;
+  left: 777px;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
 }
