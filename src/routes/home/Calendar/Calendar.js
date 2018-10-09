@@ -99,16 +99,14 @@ class Calendar extends Component {
         </div>
       </div>
 
-      <div style={{top: '2em'}}>
-        <div className={`${s.abs_div} ${s.colMonday}`}>
+      <div className={s.abs_container}>
+        <div className={`${s.abs_div} ${s.colMonday}`}></div>
         <div className={`${s.abs_div} ${s.colTuesday}`}></div>
         <div className={`${s.abs_div} ${s.colWednesday}`}></div>
         <div className={`${s.abs_div} ${s.colThursday}`}></div>
         <div className={`${s.abs_div} ${s.colFriday}`}></div>
         <div className={`${s.abs_div} ${s.colSaturday}`}></div>
         <div className={`${s.abs_div} ${s.colSunday}`}></div>
-
-        </div>
       </div>
 
       <div className={`${s.con_box__vert} ${s.padd}`}>
