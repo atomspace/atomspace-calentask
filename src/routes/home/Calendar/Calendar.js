@@ -48,10 +48,23 @@ const day = [
 ];
 
 class Calendar extends Component {
+  constructor() {
+		super();
+		this.state = {
+			showPopup: false
+		};
+	}
+
+  togglePopup() {
+		this.setState({
+			showPopup: !this.state.showPopup
+		});
+	}
+  
   displayTime() {
     var arr = [];
 
-    for(var i = 0; i < 34; i++) {
+    for(var i = 0; i < 24; i++) {
       arr.push(
         <div key={i} className={s.flex}>
           <div className={s.boxtime}>00:00</div>
@@ -64,7 +77,23 @@ class Calendar extends Component {
     return arr;
   }
 
+  displayEvent() {
+    var data = this.props.data;
+    if (data.loading) return (<div>Loading...</div>);
+    else{
+      return (
+      <div>
+        <p>{data.event.name}</p>
+        <p>{data.event.description}</p>
+        <code>{data.event.address}</code>
+      </div>
+      );
+    }
+  }
+
   render() {
+    console.log(this.props);
+    console.log(this.state);
     return(
       <div className={s.Calendar}>
         <div style={{top: '3em'}} className={`${s.flex} ${s.con_box__hor} ${s.abs}`}>
@@ -75,7 +104,7 @@ class Calendar extends Component {
           </div>
         </div>
         <div className={s.flex_col}>
-          <div className={s.box}>
+          <div onClick={this.togglePopup.bind(this)} className={s.box}>
             Понедельник
           </div>
           <div className={s.box}>
@@ -109,8 +138,9 @@ class Calendar extends Component {
         <div className={`${s.abs_div} ${s.colSunday}`}></div>
       </div>
 
-      <div className={`${s.con_box__vert} ${s.padd}`}>
+      <div className={`${s.con_box__vert}`}>
         {this.displayTime()}
+        {this.displayEvent()}
       </div>
     </div>
     );

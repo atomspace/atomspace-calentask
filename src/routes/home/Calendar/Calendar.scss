@@ -2,9 +2,12 @@
   display: flex;
 }
 
-.con_box__vert .box {
-  padding: 10px;
-  border-bottom: 1px solid gray;
+.con_box__vert {
+  padding-top: 5em;
+  .box {
+    padding-top: 2em;
+    border-bottom: 1px solid gray;
+  }
 }
 
 .con_box__hor .box {
@@ -30,10 +33,6 @@
 
 .abs>div:nth-child(1) {
   border: 0;
-}
-
-.padd {
-  padding-top: 50px;
 }
 
 .boxtime {
@@ -72,6 +71,7 @@
 
 .flex_col {
   display: flex;
+  width: 83%;
 }
 
 // .colMonday {
