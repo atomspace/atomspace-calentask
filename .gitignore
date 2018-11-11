@@ -1,0 +1,8 @@
+node_modules/
+build/
+package-lock.json
+yarn-error.log
+TestApp/testform/__pycache__
+TestApp/TestApp/__pycache__
+TestApp/testform/migrations/__pycache__
+.vscode
